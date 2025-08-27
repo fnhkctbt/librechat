@@ -11,22 +11,6 @@ registration:
     - "openid"
 
 endpoints:
-  agents:
-    disableBuilder: false
-    allowedProviders:
-      - openAI
-      - anthropic
-      - google
-    capabilities:
-      - "file_search"
-      - "actions"
-      - "tools"
-      - "ocr"
-      - "web_search"
-      - "artifacts"      # Artifact window (HTML, Mermaid, React)
-# (Optional) Sensible limits for agent loops
-    recursionLimit: 25
-    maxRecursionLimit: 50
   custom:
     # Mistral AI API
     # Model list: https://docs.mistral.ai/getting-started/models/
@@ -160,3 +144,19 @@ endpoints:
       #summaryModel: "grok-beta"
       #forcePrompt: false
       #modelDisplayLabel: "Grok"
+  agents:
+    disableBuilder: false
+    allowedProviders:
+      - openAI
+      - anthropic
+      - google
+    capabilities:
+      - "file_search"
+      - "actions"
+      - "tools"
+      - "ocr"
+      - "web_search"
+      - "artifacts"      # Artifact window (HTML, Mermaid, React)
+  # (Optional) Sensible limits for agent loops
+    recursionLimit: 25
+    maxRecursionLimit: 50
