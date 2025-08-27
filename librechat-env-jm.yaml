@@ -1,0 +1,162 @@
+version: 1.2.4
+
+cache: true
+
+registration:
+  socialLogins:
+  #  - "discord"
+  #  - "facebook"
+  #  - "github"
+  #  - "google"
+    - "openid"
+
+endpoints:
+  agents:
+    disableBuilder: false
+    allowedProviders:
+      - openAI
+      - anthropic
+      - google
+    capabilities:
+      - "file_search"
+      - "actions"
+      - "tools"
+      - "ocr"
+      - "web_search"
+      - "artifacts"      # Artifact window (HTML, Mermaid, React)
+# (Optional) Sensible limits for agent loops
+    recursionLimit: 25
+    maxRecursionLimit: 50
+  custom:
+    # Mistral AI API
+    # Model list: https://docs.mistral.ai/getting-started/models/
+    - name: "Mistral"
+      apiKey: "${MISTRAL_API_KEY}"
+      baseURL: "https://api.mistral.ai/v1"
+      models:
+        default:
+          - mistral-medium-2508
+          - magistral-medium-2507
+          - codestral-2508
+          - voxtral-mini-2507
+          - devstral-medium-2507
+          - mistral-ocr-2505
+          - magistral-medium-2506
+          - ministral-3b-2410
+          - ministral-8b-2410
+          - mistral-medium-2505
+          - codestral-2501
+          - mistral-large-2411
+          - pixtral-large-2411
+          - mistral-small-2407
+          - mistral-embed
+          - codestral-embed
+          - mistral-moderation-2411
+          - magistral-small-2507
+          - voxtral-small-2507
+          - voxtral-mini-2507
+          - mistral-small-2506
+          - magistral-small-2506
+          - devstral-small-2507
+          - mistral-small-2503
+          - mistral-small-2501
+          - devstral-small-2505
+          - pixtral-12b-2409
+          - open-mistral-nemo
+        fetch: true
+      titleConvo: true
+      titleMethod: "completion"
+      titleModel: "mistral-small-2407"
+      summarize: false
+      summaryModel: "mistral-small-2407"
+      forcePrompt: false
+      modelDisplayLabel: "Mistral"
+      dropParams:
+        - "stop"
+        - "user"
+        - "frequency_penalty"
+        - "presence_penalty"
+
+    # NVIDIA         
+    # https://build.nvidia.com/explore/discover
+    - name: "NVIDIA"
+      apiKey: "${NVIDIA_API_KEY}"
+      baseURL: "https://integrate.api.nvidia.com/v1"
+      models:
+        default:
+          - nemoretriever-ocr-v1
+          - parakeet-tdt-0.6b-v2
+          - llama-3.3-nemotron-super-49b-v1.5
+          - nvidia-nemotron-nano-9b-v2
+          - cosmos-reason1-7b
+          - llama-3.2-nemoretriever-300m-embed-v1
+          - magpie-tts-flow
+          - riva-translate-4b-instruct
+          - riva-translate-1.6b
+          - llama-3.2-nemoretriever-500m-rerank-v2
+          - cosmos-transfer1-7b
+          - llama-3.2-nemoretriever-1b-vlm-embed-v1
+          - llama-3.1-nemotron-nano-vl-8b-v1
+          - llama-3.1-nemotron-nano-4b-v1.1
+          - magpie-tts-zeroshot
+          - llama-3.1-nemotron-ultra-253b-v1
+          - parakeet-1.1b-rnnt-multilingual-asr
+          - cosmos-predict1-7b
+          - cosmos-predict1-5b
+          - sparsedrive
+          - bevformer
+          - llama-3.1-nemotron-nano-8b-v1
+          - magpie-tts-multilingual
+          - nv-embedcode-7b-v1
+        fetch: true
+      titleConvo: true
+      titleModel: "nvidia-nemotron-nano-9b-v2"
+      modelDisplayLabel: "Nvidia"
+      iconURL: "https://raw.githubusercontent.com/LibreChat-AI/librechat-config-yaml/refs/heads/main/icons/nvidia.png"
+
+    # Preplexity
+    # Model list: https://docs.perplexity.ai/docs/model-cards
+  
+    - name: "Perplexity"
+      apiKey: "${PERPLEXITY_API_KEY}"
+      baseURL: "https://api.perplexity.ai/"
+      models:
+        default:
+          - sonar
+          - sonar-pro
+          - sonar-reasoning
+          - sonar-reasoning-pro
+          - sonar-deep-research
+          - r1-1776
+        fetch: false # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "sonar-pro"
+      summarize: false
+      summaryModel: "sonar-pro"
+      forcePrompt: false
+      dropParams:
+        - "stop"
+        - "frequency_penalty"
+      modelDisplayLabel: "Perplexity"
+
+    # xAI
+    # https://x.ai/api
+  #  - name: "xai"
+   #   apiKey: "${XAI_API_KEY}"
+  #  baseURL: "https://api.x.ai/v1"
+      #  models:
+       #    default:
+        #  - grok-2-1212
+         # - grok-2-vision-1212
+         # - grok-3-beta
+          #- grok-3-mini-beta
+          #- grok-beta
+          #- grok-vision-beta
+        #fetch: false
+      #titleConvo: true
+      #titleMethod: "completion"
+      #titleModel: "grok-beta"
+      #summarize: false
+      #summaryModel: "grok-beta"
+      #forcePrompt: false
+      #modelDisplayLabel: "Grok"
